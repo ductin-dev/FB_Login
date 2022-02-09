@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { UPDATE_USER } from "data/Action";
 import { userType } from "application/context/reducer";
 import fbSvg from "static/image/Facebook.svg";
+import ErrorMess from "components/message/ErrorMess";
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -54,10 +55,13 @@ const Login = () => {
             alt="Continue with Facebook"
           />
           <h3 className="flex-grow text-center text-sm font-medium sm:text-sm">
-            Đăng nhập với Facebook +{status ? "true" : "false"}
+            Đăng nhập với Facebook
           </h3>
         </a>
       </Card>
+      {!status && error.length > 0 && (
+        <ErrorMess title={"Lỗi đăng nhập: "} mess={error} />
+      )}
     </div>
   );
 };

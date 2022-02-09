@@ -1,6 +1,5 @@
 import * as storage from "redux-storage";
 import { combineReducers } from "redux";
-import { BigNumber } from "ethers";
 import * as actionTypes from "../../data/Action";
 
 export interface userType {
@@ -26,6 +25,11 @@ function actionHandler(state = initState, action: any) {
       return {
         ...state,
         user: action.user,
+      };
+    case actionTypes.RELOAD_USER:
+      return {
+        ...state,
+        user: initState.user,
       };
     default:
       return state;
